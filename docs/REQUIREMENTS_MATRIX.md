@@ -39,7 +39,7 @@
 | I1. 언어 필터·Array.filter·All만·0건·키보드 | renderFilters/renderRepositoryList | 언어/null/0건/Enter/Featured 영향 없음 | PASS | 동적 옵션·aria-pressed·건수·무재호출 |
 | I2. Hero 실제 타이핑·완전한 초기 문구·접근성·motion | setupTyping | 중간 상태/완료/1회/배경탭/reduced-motion | PASS | sr-only 정적 텍스트와 aria-hidden 시각 텍스트 분리 |
 | I3a. Formspree 코드·전송 상태·스팸/중복/설정/timeout | canSendEmail/submitContact; EMAIL_SETUP | 메일 mock 성공/422/429/500/네트워크/서비스/JSON/timeout/중복/honeypot | PASS | 모든 메일 시험은 mock, 외부 호스트 차단 |
-| I3b. Formspree 실제 발송·수신 확인 | 사용자 외부 계정/수신설정/테스트 승인 | 실전 미실행 | BLOCKED | formId 빈값, enabled=false, emailLiveVerified=false |
+| I3b. Formspree 실제 발송·수신 확인 | 사용자 외부 계정/수신설정/테스트 승인 | 설정 완료, 실전은 사용자 확인 전 | BLOCKED | formId=mdeezyjq, enabled=true, emailLiveVerified=false; 자동 발송 없음 |
 | I4. prefers-color-scheme·수동 저장 우선 | initializeTheme/systemTheme change | 시스템 dark/변경/수동 우선/reload/저장 차단 | PASS | 첫 페인트는 CSS 시스템 감지; 수동 저장 복원 전 플래시 한계 명시 |
 | J1. 프로젝트 설명·학습 README·19절·실습·복습 | README 0~18 | 목차/실제 함수·선택자·수치 대조 | PASS | 11개 실습, 15개 설명형 문제와 해설 |
 | J2. desktop/mobile/dark 실제 캡처 | docs/screenshots | 실제 화면 스크린샷 3종 | PASS | 실제 API 응답으로 캡처, fixture는 이후에 주입 |

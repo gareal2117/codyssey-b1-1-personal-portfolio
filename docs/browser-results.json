@@ -1,9 +1,9 @@
 {
   "phase": 2,
   "sourceHashes": {
-    "index.html": "073a21b218e213de92d5078ee972c7d005d6eca18386498876dac50ac39bb762",
+    "index.html": "7490669c97fbc1c4ca9562f1fbdc872d3abce3938088e6167f934888739269c0",
     "css/style.css": "d2b839fdd612b031a9377371a0d1e52fb9d2941e69384e849bf77551cda742b0",
-    "js/config.js": "03589fc896a9b4de8896734c2b4b33b69caeeb0a7c15739d6e5a2a26f7c98191",
+    "js/config.js": "95916e7bbdfac57fe2134badbbba32d1b2ae64c12eadce19a4c381101f656327",
     "js/main.js": "bb3fab3566fde1a10501a6f8f9e03b2373839f6185237509bd6b8e99a5395094",
     "images/profile-monogram.svg": "62b50ebefadcc7ab4c37ab1c1917dbca9b01711373895a065ea5d6149c56461e"
   },
@@ -11,8 +11,8 @@
     "light": 5.53,
     "dark": 7.51
   },
-  "email_live": "BLOCKED: no configured service; all email tests mocked and external endpoint blocked",
-  "pages_live": "BLOCKED: not deployed",
+  "email_live": "BLOCKED: configured mdeezyjq; actual sending/receipt awaits user; all email tests mocked and external endpoint blocked",
+  "pages_live": "Not tested by local browser suite; check existing Pages deployment separately",
   "browser": "Chrome/146.0.7680.165",
   "actual_api": "공개 저장소 8개 · All은 이름 오름차순",
   "repository_name_check": {
@@ -20,9 +20,29 @@
   },
   "results": [
     {
+      "name": "Formspree 승인 설정·문의 폼 활성화",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "데스크톱 Header 로고 JL",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
       "name": "실제 GitHub API 연결",
       "status": "PASS",
       "detail": "공개 저장소 8개 · All은 이름 오름차순"
+    },
+    {
+      "name": "모바일 Header 로고 JL",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Header 로고 Home 이동",
+      "status": "PASS",
+      "detail": ""
     },
     {
       "name": "실제 화면 스크린샷 3종",
@@ -431,6 +451,11 @@
     },
     {
       "name": "메일 중복 submit 네트워크 방지",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "메일 mock 요청 endpoint mdeezyjq",
       "status": "PASS",
       "detail": ""
     },

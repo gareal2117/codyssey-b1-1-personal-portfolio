@@ -148,6 +148,8 @@ def run(browser, base_url):
 
     viewport(1440)
     load()
+    check('Formspree 승인 설정·문의 폼 활성화', js("window.PortfolioConfig.email.formId === 'mdeezyjq' && window.PortfolioConfig.email.enabled === true && !document.querySelector('#contact-submit').disabled && document.querySelector('#contact-submit').textContent.includes('메시지 보내기')"))
+    check('데스크톱 Header 로고 JL', js("document.querySelector('.logo').textContent === 'JL' && getComputedStyle(document.querySelector('.logo'),'::after').content === 'none' && getComputedStyle(document.querySelector('.logo'),'::before').content === 'none'"))
     settled = wait_for(browser, "!document.querySelector('#project-grid').getAttribute('aria-busy').includes('true')", 25)
     actual_status = js("document.querySelector('#projects-status').textContent")
     real_ok = settled and js("document.querySelectorAll('.project-card').length > 0 || document.querySelector('#projects-status').textContent.includes('표시할 프로젝트가 없습니다')")
@@ -155,6 +157,9 @@ def run(browser, base_url):
     wait_for(browser, "!document.querySelector('.typing-visual') || document.querySelector('[data-content=heroGreeting]').classList.contains('typing-complete')")
     screenshot('desktop.png')
     viewport(375)
+    check('모바일 Header 로고 JL', js("document.querySelector('.logo').textContent === 'JL' && document.querySelector('.logo').getBoundingClientRect().width > 0"))
+    click('.logo')
+    check('Header 로고 Home 이동', wait_for(browser, "document.activeElement.id === 'home' && location.hash === '#home'"))
     screenshot('mobile.png')
     click('#theme-toggle')
     viewport(1440)
@@ -220,6 +225,8 @@ def run(browser, base_url):
     fill('email', 'qa@example.test')
     fill('message', '<img src=x onerror=alert(1)>')
     check('input 수정 시 오류 갱신', js("document.querySelectorAll('[aria-invalid=\"true\"]').length === 0"))
+    # 비활성 설정의 기존 방어 분기도 유지합니다. 이 문서의 메모리에서만 잠시 바꿉니다.
+    js('window.PortfolioConfig.email.enabled=false')
     click('button[type="submit"]')
     check('정상 입력 검증·미전송 명시', js("document.querySelector('#form-status').dataset.state === 'error' && document.querySelector('#form-status').textContent.includes('전송되지 않았습니다') && window.__calls === 1"))
     fill('message', '수정된 QA 입력')
@@ -257,7 +264,7 @@ def run(browser, base_url):
     browser.call('Emulation.setScriptExecutionDisabled', {'value': True})
     browser.call('Page.reload')
     time.sleep(.5)
-    check('JavaScript 미지원 정적 콘텐츠·안전한 폼', js("document.querySelectorAll('main section').length === 5 && document.querySelector('#home-title').textContent === '개발자로 성장하고 있는 이준성입니다.' && !/\[[^\]]*미정\]/.test(document.body.innerText) && document.querySelector('#contact-fields').disabled && getComputedStyle(document.querySelector('#nav-menu')).display === 'flex' && getComputedStyle(document.querySelector('.reveal')).visibility === 'visible'"))
+    check('JavaScript 미지원 정적 콘텐츠·안전한 폼', js("document.querySelectorAll('main section').length === 5 && document.querySelector('#home-title').textContent === '개발자로 성장하고 있는 이준성입니다.' && document.querySelector('.logo').textContent === 'JL' && !/\[[^\]]*미정\]/.test(document.body.innerText) && document.querySelector('#contact-fields').disabled && getComputedStyle(document.querySelector('#nav-menu')).display === 'flex' && getComputedStyle(document.querySelector('.reveal')).visibility === 'visible'"))
     browser.call('Emulation.setScriptExecutionDisabled', {'value': False})
     # 2차 추가 검증: 결정 계약, 이미지, 보너스, 실제 응답과 mock 전송의 경계.
     load(success_script)
@@ -332,17 +339,18 @@ def run(browser, base_url):
 
     # Formspree 호스트는 CDP에서 차단되어 있으므로 fixture 실수로도 실제 발송하지 않습니다.
     load(success_script)
-    js("window.PortfolioConfig.email.enabled=true;window.PortfolioConfig.email.formId='qatest00';window.__posts=0;")
+    js("window.__posts=0;")
     def valid_form():
         fill('name','QA 학습용 입력')
         fill('email','qa@example.test')
         fill('message','모의 전송 테스트이며 실제 발송하지 않음')
     valid_form()
-    js("window.fetch=(url,options)=>{window.__posts++;window.__body=Object.fromEntries(options.body.entries());return new Promise(resolve=>{window.__postResolve=resolve});}")
+    js("window.fetch=(url,options)=>{window.__posts++;window.__postUrl=url;window.__body=Object.fromEntries(options.body.entries());return new Promise(resolve=>{window.__postResolve=resolve});}")
     click('button[type="submit"]')
     check('메일 submitting·중복 버튼 비활성', js("document.querySelector('#form-status').dataset.state==='submitting' && document.querySelector('#contact-fields').disabled && window.__posts===1"))
     js("document.querySelector('#contact-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))")
     check('메일 중복 submit 네트워크 방지', js('window.__posts===1'))
+    check('메일 mock 요청 endpoint mdeezyjq', js("window.__postUrl === 'https://formspree.io/f/mdeezyjq'"))
     check('메일 payload·공개 식별자만 사용', js("window.__body.name==='QA 학습용 입력' && Object.keys(window.__body).sort().join(',')==='_gotcha,email,message,name'"))
     js("window.__postResolve(new Response(JSON.stringify({ok:true}),{status:200}))")
     check('메일 mock 성공 후에만 reset', wait_for(browser, "document.querySelector('#form-status').dataset.state==='success' && document.querySelector('#contact-name').value===''"))
@@ -391,7 +399,7 @@ def run(browser, base_url):
     time.sleep(30)
     check('30초 렌더 유지 후 필터·폼·타이핑 안정', js("document.querySelectorAll('#project-grid article').length===3 && !document.querySelector('#contact-fields').disabled && document.querySelector('[data-content=heroGreeting]').classList.contains('typing-complete')"))
     check('미처리 JavaScript 예외·console.error 없음', not browser.exceptions and not browser.console_errors, json.dumps(browser.exceptions + browser.console_errors, ensure_ascii=False))
-    return {'phase': 2, 'sourceHashes': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']}, 'contrast': contrast, 'email_live': 'BLOCKED: no configured service; all email tests mocked and external endpoint blocked', 'pages_live': 'BLOCKED: not deployed', 'browser': version, 'actual_api': actual_status, 'repository_name_check': collision, 'results': RESULTS}
+    return {'phase': 2, 'sourceHashes': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']}, 'contrast': contrast, 'email_live': 'BLOCKED: configured mdeezyjq; actual sending/receipt awaits user; all email tests mocked and external endpoint blocked', 'pages_live': 'Not tested by local browser suite; check existing Pages deployment separately', 'browser': version, 'actual_api': actual_status, 'repository_name_check': collision, 'results': RESULTS}
 
 
 def main():

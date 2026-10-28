@@ -17,7 +17,7 @@
 | TBD_PUBLIC_CONTACT | publicContact | VERIFIED | 이메일과 전화번호는 공개하지 않습니다. | config.js, index.html / 정적 대체문구와 동기화 |
 | TBD_SOCIAL_LINKS | socialLinks | VERIFIED | [{"label": "GitHub", "url": "https://github.com/gareal2117"}] | config.js / #social-links, 중복 제거 |
 | TBD_PROFILE_IMAGE | profileImage | VERIFIED | {"src": "./images/profile-monogram.svg", "alt": "이준성의 영문 이니셜 JL을 표현한 파란색 프로필 모노그램 그래픽"} | images/profile-monogram.svg / img src·alt 및 안전한 경로 |
-| TBD_LOGO_CONTENT | logoContent | VERIFIED | JL. | config.js, index.html / 정적 대체문구와 동기화 |
+| TBD_LOGO_CONTENT | logoContent | VERIFIED | JL | config.js, index.html / Header의 마침표만 제거, CSS 유지 |
 | TBD_HERO_GREETING | heroGreeting | VERIFIED | 안녕하세요. | config.js, index.html / 정적 대체문구와 동기화 |
 | TBD_HERO_HEADLINE | heroHeadline | VERIFIED | 개발자로 성장하고 있는 이준성입니다. | config.js, index.html / 정적 대체문구와 동기화 |
 | TBD_HERO_DESCRIPTION | heroDescription | VERIFIED | 새로운 기술을 배우고 직접 구현하며, 개발 역량을 쌓아가고 있습니다. | config.js, index.html / 정적 대체문구와 동기화 |
@@ -27,7 +27,7 @@
 | TBD_SKILL_CATEGORIES | skillCategories | VERIFIED | {"Python": "Programming", "Git": "Version Control", "GitHub": "Repository Hosting", "Docker": "Development Environment"} | config.js / renderPersonalContent, #skills-list |
 | TBD_SKILL_DESCRIPTIONS | skillDescriptions | VERIFIED | {"Python": "기초 프로그래밍 및 과제 구현", "Git": "버전 관리 및 브랜치 실습(merge·충돌 해결 경험)", "GitHub": "저장소 생성 및 코드 관리", "Docker": "컨테이너 및 개발환경 구성 실습"} | config.js / renderPersonalContent, #skills-list |
 | TBD_PROJECT_PRESENTATION_PREFERENCE | projectPresentationPreference | VERIFIED | Featured 3개 + All Repositories + GitHub 및 실존 README 링크 | config.js, main.js / Featured·All·README 캐시 |
-| TBD_CONTACT_INTRO_TEXT | contactIntroText | VERIFIED | 문의 전송 서비스 연동 전입니다. 현재는 입력 검증만 가능하며 메시지는 전송되지 않습니다. | config.js, index.html / 정적 대체문구와 동기화 |
+| TBD_CONTACT_INTRO_TEXT | contactIntroText | VERIFIED | 아래 폼으로 문의를 남길 수 있습니다. 개인 이메일 주소는 공개하지 않습니다. | config.js, index.html / 활성 폼 안내와 정적 대체문구 동기화 |
 | TBD_CONTACT_VISUAL_STYLE | contactVisualStyle | VERIFIED | Blueberry Signal 톤, 폼 가독성과 상태 안내 우선 | config.js, style.css / Blueberry Signal, 사용자 최종 시각 승인 대기 |
 | TBD_FOOTER_DISPLAY_NAME | footerDisplayName | VERIFIED | 이준성 &#124; Junseong Lee | config.js, index.html / 정적 대체문구와 동기화 |
 | TBD_FOOTER_PERSONAL_MESSAGE | footerPersonalMessage | VERIFIED | 의도적인 미사용(빈 문자열) | config.js, index.html / 정적 대체문구와 동기화 |
@@ -42,3 +42,7 @@
 ## 코드 게시 후속 승인
 
 위 외부 의존성 목록은 2차 개발 당시 기록입니다. 이후 사용자가 코드 커밋·일반 push와 기존 포트폴리오 재사용/rename을 승인했습니다. 빈 my-portfolio를 codyssey-b1-1-personal-portfolio로 변경하고 origin을 연결했습니다. release.publishApproved=true는 **코드 게시 승인만** 뜻합니다. pagesApproved=false, pagesVerified=false, pagesUrl=null이며 GitHub Pages는 독립 코드 검토 후 별도 승인 대상입니다. 디자인과 이메일 실전 상태는 변경하지 않았습니다.
+
+## Formspree·Header 후속 변경
+
+사용자가 공개 Form ID `mdeezyjq`의 활성화를 승인하여 enabled=true를 적용했습니다. 비밀키나 수신 이메일은 추가하지 않았습니다. Header는 `JL.`에서 `JL`로 변경하고 색상·크기·폰트·위치·Home 링크는 유지했습니다. 실제 시험 메일은 발송하지 않으며 emailLiveVerified=false를 유지합니다. 기존 Pages의 main / (root) 자동 배포 설정은 변경하지 않습니다. 이번 push의 재배포 결과와 실제 메일 수신은 별도로 확인합니다.

@@ -81,8 +81,8 @@
   },
   "email": {
     "provider": "formspree",
-    "formId": "",
-    "enabled": false,
+    "formId": "mdeezyjq",
+    "enabled": true,
     "timeoutMs": 15000
   },
   "release": {
@@ -162,7 +162,7 @@
     "logoContent": {
       "id": "TBD_LOGO_CONTENT",
       "status": "VERIFIED",
-      "value": "JL."
+      "value": "JL"
     },
     "heroGreeting": {
       "id": "TBD_HERO_GREETING",
@@ -227,7 +227,7 @@
     "contactIntroText": {
       "id": "TBD_CONTACT_INTRO_TEXT",
       "status": "VERIFIED",
-      "value": "문의 전송 서비스 연동 전입니다. 현재는 입력 검증만 가능하며 메시지는 전송되지 않습니다."
+      "value": "아래 폼으로 문의를 남길 수 있습니다. 개인 이메일 주소는 공개하지 않습니다."
     },
     "contactVisualStyle": {
       "id": "TBD_CONTACT_VISUAL_STYLE",

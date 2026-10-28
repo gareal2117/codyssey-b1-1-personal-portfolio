@@ -31,13 +31,13 @@
 | --- | --- |
 | LOCAL_IMPLEMENTATION | 필수 기능과 보너스 4개의 로컬 코드 구현 |
 | LOCAL_VERIFIED | 최신 실제 검증 결과는 [TEST_REPORT](./TEST_REPORT.md) 및 [JSON](./docs/browser-results.json) 참조 |
-| EMAIL_LIVE_VERIFIED | BLOCKED — 서비스 설정·실제 발송·수신 확인 전 |
-| GITHUB_PAGES_VERIFIED | BLOCKED — 미배포 |
+| EMAIL_LIVE_VERIFIED | BLOCKED — Formspree 설정 완료, 실제 발송·수신은 사용자 확인 전 |
+| GITHUB_PAGES_VERIFIED | 기존 배포 확인, 이번 수정의 자동 재배포 결과 확인 필요 |
 | SUBMISSION_READY | BLOCKED — 실전 메일·Pages·디자인/배포 승인 필요 |
 
 개인화는 승인된 25개 키를 유지하고 [DECISIONS](./DECISIONS.md)에 추적합니다. Blueberry Signal은 색조를 참조한 제안 디자인입니다. 상표 이미지나 기타 사진을 복제하지 않았고, 디자인의 최종 시각 승인까지 받았다고 주장하지 않습니다. 프로필은 실물 사진 대신 직접 작성한 `JL.` 모노그램 SVG입니다.
 
-정적 파일은 브라우저에서 실행되고 GitHub API는 저장소 정보를 제공하며, 활성화된 Formspree만 문의 처리를 담당합니다. 현재 `email.enabled=false`, `formId=''`이므로 실제 문의 요청은 발생하지 않습니다. 제출 준비는 18절의 체크리스트로 분리합니다.
+정적 파일은 브라우저에서 실행되고 GitHub API는 저장소 정보를 제공하며 Formspree가 문의 처리를 담당합니다. 사용자 제공 공개 ID `mdeezyjq`와 `email.enabled=true`를 적용했습니다. 방문자가 제출하면 `https://formspree.io/f/mdeezyjq`로 요청합니다. 실제 시험 메일은 자동 발송하지 않았으며 사용자가 배포 사이트에서 발송·수신을 확인해야 합니다. Header 로고는 `JL`이며 Hero·프로필 그래픽은 유지했습니다.
 
 ## 2. 개발 환경, 실행 경로와 디렉터리
 
@@ -359,7 +359,7 @@ const response = await fetch(`https://formspree.io/f/${email.formId}`, {
 
 상태는 idle → invalid 또는 submitting → success/error입니다. 전송 중 필드·버튼을 잠그고, 실제 응답이 성공하며 오류 객체가 아닐 때만 reset합니다. success 문구는 서비스 접수 사실을 설명하고 수신함 도착을 보장하지 않습니다. 오류·설정 누락·타임아웃에서는 입력을 유지합니다. 네트워크가 끊겼어도 서버는 이미 접수했을 수 있어 자동 재시도하지 않습니다.
 
-공개 이메일 비표시와 실제 문의 수신은 양립합니다. 사용자가 서비스에서 수신 주소를 설정하고, 방문자의 입력은 제출 시 Formspree와 수신자에게 전달된다는 짧은 고지를 표시합니다. 현재는 연동 전이므로 외부 전송이 없습니다. 스팸 방어는 honeypot, 중복 잠금, 길이 제한 및 서비스 측 보호를 함께 사용합니다. 브라우저 검사는 우회 가능하므로 서버 보호가 필요합니다.
+공개 이메일 비표시와 실제 문의 수신은 양립합니다. 사용자가 서비스에서 폼을 생성했고 공개 ID를 연결했습니다. 방문자의 입력은 제출 시 Formspree와 수신자에게 전달된다는 고지를 표시합니다. 실제 수신 확인은 사용자에게 남겨 두었습니다. 스팸 방어는 honeypot, 중복 잠금, 길이 제한 및 서비스 측 보호를 함께 사용합니다. 브라우저 검사는 우회 가능하므로 서버 보호가 필요합니다.
 
 **확인:** 빈 폼·공백·잘못된 이메일을 제출하고 오류 위치/초점을 보세요. mock 성공과 실제 발송·수신 검증은 분리합니다. 서비스 계정·수신 설정·공개 ID·테스트 한 건 승인·수신함 확인은 [EMAIL_SETUP.md](./docs/EMAIL_SETUP.md)의 단계대로 진행하며, 현재 보너스의 실전 완료 상태는 BLOCKED입니다.
 
@@ -496,7 +496,7 @@ push는 공개 범위에 따라 코드가 외부에 게시되는 동작입니다
 | 2. click과 상태 | #theme-toggle, html[data-theme] | 버튼 클릭 전후 Elements 속성 관찰 | theme/버튼/aria가 함께 변함 | 버튼 재클릭 또는 저장값 제거 후 reload |
 | 3. CSS 변수 | 복사본 style.css의 --radius-card | 값을 1.25rem에서 .25rem으로 변경·저장 | 기본 카드 모서리 변화, 별도 override는 그대로일 수 있음 | 원래 값 복원 |
 | 4. 모바일 Grid | DevTools Responsive | 375→768→1024→1440 너비 변경 | 카드 열/메뉴 표시가 달라짐 | 반응형 모드 종료 |
-| 5. 폼 검증 | #contact-form | 서비스 비활성 확인 후 빈값·공백·잘못된 이메일 제출 | 필드별 오류·첫 오류 초점, 실제 전송 없음 | reload; 브라우저 자동완성 여부도 확인 |
+| 5. 폼 검증 | #contact-form | 복사본의 email.enabled를 false로 설정한 뒤 빈값·공백·잘못된 이메일 제출 | 필드별 오류·첫 오류 초점, 실제 전송 없음 | 복사본만 원복; 운영 사이트의 정상 입력은 실제 전송됨 |
 | 6. 배열 filter | 아래 독립 콘솔 예제 | API와 무관한 학습 배열 실행 | Python 항목만 새 배열로 반환 | 콘솔 clear/reload |
 | 7. 저장 우선순위 | localStorage 키 | 저장값 제거→시스템 dark→reload→수동 light | 시스템→수동 우선 차이 관찰 | 원래 시스템/저장 선택 복원 |
 | 8. 네트워크 실패 | DevTools Network Offline | Offline 후 reload, Online 후 재시도 | 오류→로딩→실제 성공 | Online 유지 |
@@ -571,8 +571,8 @@ console.log(pythonItems, practiceItems.length);
 - 확정 GitHub 프로필: https://github.com/gareal2117
 - 실제 저장소: https://github.com/gareal2117/codyssey-b1-1-personal-portfolio
 - 기존 `my-portfolio`를 목표 이름으로 변경하고 origin을 연결했습니다.
-- **실제 Pages URL: 미배포.** 코드 게시만 승인되었으며 Pages는 독립 코드 검토 후 별도 승인 대상입니다.
-- 배포 주소 형식 예시만: `https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/`. 실제 작동 URL로 기재한 것이 아닙니다.
+- Pages URL: https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/
+- 후속 확인에서 기존 Pages가 main / (root) 기반으로 배포되어 있음을 확인했습니다. 설정은 유지하며 이번 push 이후 자동 재배포 결과와 새 설정 반영을 확인해야 합니다.
 
 최신 로컬 캡처는 실제 API 데이터를 표시한 화면입니다. 디자인은 사용자 시각 검토 전이며, 실제 배포 완료 화면을 뜻하지 않습니다.
 

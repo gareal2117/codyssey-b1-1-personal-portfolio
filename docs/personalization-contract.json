@@ -1,0 +1,125 @@
+{
+  "displayName": {
+    "id": "TBD_DISPLAY_NAME",
+    "value": "이준성 | Junseong Lee"
+  },
+  "personalBackground": {
+    "id": "TBD_PERSONAL_BACKGROUND",
+    "value": "광운대학교 정보융합학부 재학, 코디세이 AI 올인원 과정 학습"
+  },
+  "introductionDirection": {
+    "id": "TBD_INTRODUCTION_DIRECTION",
+    "value": "개발자 포트폴리오/개인 브랜딩, 개발 중심·음악 취미 간단히"
+  },
+  "interests": {
+    "id": "TBD_INTERESTS",
+    "value": "프로그래밍과 다양한 개발 기술"
+  },
+  "activities": {
+    "id": "TBD_ACTIVITIES",
+    "value": "코디세이 과제 학습·수행, 취미로 다양한 음악 활동"
+  },
+  "designConcept": {
+    "id": "TBD_DESIGN_CONCEPT",
+    "value": "Blueberry Signal"
+  },
+  "designPreferences": {
+    "id": "TBD_DESIGN_PREFERENCES",
+    "value": "Blueberry Burst 네이비/블루/스카이블루, 비대칭 타이포 중심, 주요 이름 정자체"
+  },
+  "personalContent": {
+    "id": "TBD_PERSONAL_CONTENT",
+    "value": ""
+  },
+  "publicContact": {
+    "id": "TBD_PUBLIC_CONTACT",
+    "value": "이메일과 전화번호는 공개하지 않습니다."
+  },
+  "socialLinks": {
+    "id": "TBD_SOCIAL_LINKS",
+    "value": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/gareal2117"
+      }
+    ]
+  },
+  "profileImage": {
+    "id": "TBD_PROFILE_IMAGE",
+    "value": {
+      "src": "./images/profile-monogram.svg",
+      "alt": "이준성의 영문 이니셜 JL을 표현한 파란색 프로필 모노그램 그래픽"
+    }
+  },
+  "logoContent": {
+    "id": "TBD_LOGO_CONTENT",
+    "value": "JL."
+  },
+  "heroGreeting": {
+    "id": "TBD_HERO_GREETING",
+    "value": "안녕하세요."
+  },
+  "heroHeadline": {
+    "id": "TBD_HERO_HEADLINE",
+    "value": "개발자로 성장하고 있는 이준성입니다."
+  },
+  "heroDescription": {
+    "id": "TBD_HERO_DESCRIPTION",
+    "value": "새로운 기술을 배우고 직접 구현하며, 개발 역량을 쌓아가고 있습니다."
+  },
+  "heroPersonalVisual": {
+    "id": "TBD_HERO_PERSONAL_VISUAL",
+    "value": "블루베리 시그널 추상 CSS 그래픽"
+  },
+  "aboutIntroduction": {
+    "id": "TBD_ABOUT_INTRODUCTION",
+    "value": "광운대학교 정보융합학부에 재학 중이며, 코디세이 AI 올인원 과정에서 다양한 과제를 수행하며 소프트웨어 개발을 공부하고 있습니다.\n프로그래밍과 다양한 개발 기술에 관심을 가지고 있습니다.\n개발 외에는 다양한 음악 활동을 즐기는 것이 취미입니다."
+  },
+  "skillList": {
+    "id": "TBD_SKILL_LIST",
+    "value": [
+      "Python",
+      "Git",
+      "GitHub",
+      "Docker"
+    ]
+  },
+  "skillCategories": {
+    "id": "TBD_SKILL_CATEGORIES",
+    "value": {
+      "Python": "Programming",
+      "Git": "Version Control",
+      "GitHub": "Repository Hosting",
+      "Docker": "Development Environment"
+    }
+  },
+  "skillDescriptions": {
+    "id": "TBD_SKILL_DESCRIPTIONS",
+    "value": {
+      "Python": "기초 프로그래밍 및 과제 구현",
+      "Git": "버전 관리 및 브랜치 실습(merge·충돌 해결 경험)",
+      "GitHub": "저장소 생성 및 코드 관리",
+      "Docker": "컨테이너 및 개발환경 구성 실습"
+    }
+  },
+  "projectPresentationPreference": {
+    "id": "TBD_PROJECT_PRESENTATION_PREFERENCE",
+    "value": "Featured 3개 + All Repositories + GitHub 및 실존 README 링크"
+  },
+  "contactIntroText": {
+    "id": "TBD_CONTACT_INTRO_TEXT",
+    "value": "문의 전송 서비스 연동 전입니다. 현재는 입력 검증만 가능하며 메시지는 전송되지 않습니다."
+  },
+  "contactVisualStyle": {
+    "id": "TBD_CONTACT_VISUAL_STYLE",
+    "value": "Blueberry Signal 톤, 폼 가독성과 상태 안내 우선"
+  },
+  "footerDisplayName": {
+    "id": "TBD_FOOTER_DISPLAY_NAME",
+    "value": "이준성 | Junseong Lee"
+  },
+  "footerPersonalMessage": {
+    "id": "TBD_FOOTER_PERSONAL_MESSAGE",
+    "value": ""
+  }
+}

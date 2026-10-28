@@ -1,0 +1,25 @@
+.DS_Store
+.vscode/
+.idea/
+node_modules/
+.env
+.env.*
+__pycache__/
+*.pyc
+.qa-profile/
+
+# 로컬 도구 설정과 인증 파일은 원격에 게시하지 않습니다.
+.codex/
+.agents/
+.aws/
+.ssh/
+.gh-config/
+.git-credentials
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+*.log

@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+  "targetRepository": {
+    "name": "codyssey-b1-1-personal-portfolio",
+    "status": 404,
+    "url": null
+  },
+  "repositories": {
+    "codyssey-mission01-docker-workstation": {
+      "status": 200,
+      "branch": "main",
+      "pushedAt": "2026-08-17T21:53:40Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+      "path": "README.md",
+      "url": "https://github.com/gareal2117/codyssey-mission01-docker-workstation/blob/main/README.md",
+      "sha": "590081b1bead20c5b2ce972f9849558154247243"
+    },
+    "codyssey-mission02-python-quiz-game": {
+      "status": 200,
+      "branch": "main",
+      "pushedAt": "2026-08-17T22:40:57Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+      "path": "README.md",
+      "url": "https://github.com/gareal2117/codyssey-mission02-python-quiz-game/blob/main/README.md",
+      "sha": "d25f8a60a9107114f8c589aa23001a8a1c9e430f"
+    },
+    "codyssey-mission03-mini-npu-simulator": {
+      "status": 200,
+      "branch": "main",
+      "pushedAt": "2026-08-17T22:20:53Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+      "path": "README.md",
+      "url": "https://github.com/gareal2117/codyssey-mission03-mini-npu-simulator/blob/main/README.md",
+      "sha": "e0021aec225bc4241622d5044742d19e2031d435"
+    },
+    "fastapi-course-records": {
+      "status": 404,
+      "branch": "main",
+      "pushedAt": "2026-06-03T07:44:31Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00"
+    },
+    "find-your-vibe": {
+      "status": 404,
+      "branch": "main",
+      "pushedAt": "2026-06-17T11:08:36Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00"
+    },
+    "kw-open-source-software-exercise1": {
+      "status": 200,
+      "branch": "main",
+      "pushedAt": "2026-03-26T16:19:51Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+      "path": "README.md",
+      "url": "https://github.com/gareal2117/kw-open-source-software-exercise1/blob/main/README.md",
+      "sha": "e51433147d0dc8026f1e246f4de6b749a45334ca"
+    },
+    "music-genre-quiz": {
+      "status": 200,
+      "branch": "main",
+      "pushedAt": "2026-04-27T11:58:47Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00",
+      "path": "README.md",
+      "url": "https://github.com/gareal2117/music-genre-quiz/blob/main/README.md",
+      "sha": "412e60282aef54bf163b7e32f662eb253dc28052"
+    },
+    "my-portfolio": {
+      "status": 404,
+      "branch": "main",
+      "pushedAt": "2026-10-28T12:25:28Z",
+      "checkedAt": "2026-10-28T22:05:35.457516+09:00"
+    }
+  }
+}

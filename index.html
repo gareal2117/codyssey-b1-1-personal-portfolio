@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="이준성 | Junseong Lee. 코디세이 AI 올인원 과정의 학습 과제와 개발 경험을 기록하는 개인 포트폴리오.">
+  <title>이준성 | Junseong Lee · 포트폴리오</title>
+  <link rel="icon" href="./images/profile-monogram.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/config.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header" id="site-header">
+    <nav class="navigation container" aria-label="주요 메뉴">
+      <a class="logo" href="#home" aria-label="이준성 홈" data-content="logoContent">JL.</a>
+      <div class="nav-actions">
+        <button class="button button-small" id="theme-toggle" type="button" aria-pressed="false" hidden>다크 모드</button>
+        <button class="button button-small menu-toggle" id="menu-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" hidden><span aria-hidden="true">☰</span> 메뉴</button>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero container" id="home" aria-labelledby="home-title" tabindex="-1">
+      <div class="hero-copy">
+        <p class="eyebrow hero-kicker">DEVELOPMENT · LEARNING · MUSIC</p>
+        <p class="greeting" data-content="heroGreeting">안녕하세요.</p>
+        <h1 id="home-title" data-content="heroHeadline">개발자로 성장하고 있는 이준성입니다.</h1>
+        <p class="hero-name" data-content="displayName">이준성 | Junseong Lee</p>
+        <p class="lead" data-content="heroDescription">새로운 기술을 배우고 직접 구현하며, 개발 역량을 쌓아가고 있습니다.</p>
+        <div class="button-group"><a class="button button-primary" href="#projects">프로젝트 보기 <span aria-hidden="true">↗</span></a><a class="button" href="#contact">Contact <span aria-hidden="true">↘</span></a></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true"><div class="signal-orbit orbit-one"></div><div class="signal-orbit orbit-two"></div><div class="signal-core"><span>JL.</span></div><div class="signal-note">배우고, 만들고,<br>다시 시도하기.</div><span class="signal-coordinate">BLUEBERRY / 01</span></div>
+      <div class="hero-baseline"><span>코디세이 AI 올인원 · 학습 포트폴리오</span><a href="#about">아래로 더 알아보기 ↓</a></div>
+    </section>
+
+    <section class="section container" id="about" aria-labelledby="about-title" tabindex="-1">
+      <div class="section-heading"><p class="eyebrow">01 / ABOUT</p><h2 id="about-title">배움의 과정,<br><span class="text-accent">그리고 나.</span></h2></div>
+      <div class="about-layout reveal">
+        <figure class="profile-figure"><img class="profile-image" id="profile-image" src="./images/profile-monogram.svg" alt="이준성의 영문 이니셜 JL을 표현한 파란색 프로필 모노그램 그래픽" width="480" height="480" loading="lazy"><figcaption>Junseong Lee · 프로필 모노그램</figcaption><p id="profile-fallback" hidden>JL · 프로필 그래픽을 표시할 수 없습니다.</p></figure>
+        <div class="about-copy"><p class="about-introduction" data-content="aboutIntroduction">광운대학교 정보융합학부에 재학 중이며, 코디세이 AI 올인원 과정에서 다양한 과제를 수행하며 소프트웨어 개발을 공부하고 있습니다.
+프로그래밍과 다양한 개발 기술에 관심을 가지고 있습니다.
+개발 외에는 다양한 음악 활동을 즐기는 것이 취미입니다.</p><div class="interest-note"><span aria-hidden="true">♫</span><p>개발을 공부하고,<br>음악을 즐기는 일상.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section container" id="skills" aria-labelledby="skills-title" tabindex="-1">
+      <div class="section-heading heading-row"><div><p class="eyebrow">02 / SKILLS &amp; TOOLS</p><h2 id="skills-title">직접 다루며<br>익혀가는 도구들.</h2></div><p>과제와 실습을 통해 쌓는 경험입니다.<br>숙련도 등급이나 실무 경력을 의미하지 않습니다.</p></div>
+      <ul class="skills-list reveal" id="skills-list">
+        <li class="skill-card"><p class="skill-category">Programming</p><h3>Python</h3><p>기초 프로그래밍 및 과제 구현</p></li>
+        <li class="skill-card"><p class="skill-category">Version Control</p><h3>Git</h3><p>버전 관리 및 브랜치 실습(merge·충돌 해결 경험)</p></li>
+        <li class="skill-card"><p class="skill-category">Repository Hosting</p><h3>GitHub</h3><p>저장소 생성 및 코드 관리</p></li>
+        <li class="skill-card"><p class="skill-category">Development Environment</p><h3>Docker</h3><p>컨테이너 및 개발환경 구성 실습</p></li>
+      </ul>
+      <p class="learning-note">이 웹사이트는 AI의 도움을 받아 구현하고 검증한 학습 결과물입니다. 기술 목록은 실제 실습 범위에 맞춰 기록했습니다.</p>
+    </section>
+
+    <section class="section container" id="projects" aria-labelledby="projects-title" tabindex="-1">
+      <div class="section-heading heading-row"><div><p class="eyebrow">03 / PROJECTS</p><h2 id="projects-title">코드로 남긴<br><span class="text-accent">학습의 기록.</span></h2></div><p>Featured는 코디세이 과정에서 수행한 학습 과제입니다.<br>All Repositories에는 전체 공개 저장소가 표시됩니다.</p></div>
+      <p id="projects-status" role="status" aria-live="polite">JavaScript를 켜면 GitHub 공개 저장소를 불러옵니다.</p>
+      <button class="button" id="projects-retry" type="button" hidden>다시 불러오기</button>
+      <div class="project-subheading"><h3>Featured Projects</h3><span>선택한 코디세이 과제 · 지정 순서</span></div>
+      <p id="featured-status">연결 후 확인된 저장소만 표시합니다.</p>
+      <div class="project-grid featured-grid" id="featured-grid" aria-busy="false"></div>
+      <div class="project-subheading all-heading"><h3>All Repositories</h3><span>전체 공개 저장소 · 이름 오름차순</span></div>
+      <div class="language-filters" id="language-filters" role="group" aria-label="전체 저장소 언어 필터"></div>
+      <p id="filter-status" role="status" aria-live="polite"></p>
+      <div class="project-grid" id="project-grid" aria-busy="false"></div>
+      <noscript><p>JavaScript가 꺼져 있습니다. <a href="https://github.com/gareal2117?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub에서 저장소 보기 (새 창)</a></p></noscript>
+    </section>
+
+    <section class="section container" id="contact" aria-labelledby="contact-title" tabindex="-1">
+      <div class="contact-panel">
+        <div class="contact-note"><p class="eyebrow">04 / CONTACT</p><h2 id="contact-title">이야기를<br>남겨주세요<span class="text-accent">.</span></h2><p id="contact-intro" data-content="contactIntroText">문의 전송 서비스 연동 전입니다. 현재는 입력 검증만 가능하며 메시지는 전송되지 않습니다.</p><p class="contact-privacy" data-content="publicContact">이메일과 전화번호는 공개하지 않습니다.</p><p id="form-notice">현재 입력은 이 페이지에서만 검증하며 외부로 보내지 않습니다. 연동 후 제출하면 이름·이메일·메시지가 Formspree와 수신자에게 전달됩니다. 민감한 정보는 입력하지 마세요.</p><noscript><p>JavaScript를 켜야 입력 검증과 문의 전송을 사용할 수 있습니다.</p></noscript></div>
+        <form id="contact-form" novalidate aria-describedby="form-notice">
+          <fieldset id="contact-fields" disabled><legend class="sr-only">연락 내용 입력 (모든 항목 필수)</legend>
+            <div class="field"><label for="contact-name">이름 <span>(필수)</span></label><input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="name-error"><p class="field-error" id="name-error" aria-live="polite"></p></div>
+            <div class="field"><label for="contact-email">이메일 <span>(필수)</span></label><input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error"><p class="field-error" id="email-error" aria-live="polite"></p></div>
+            <div class="field"><label for="contact-message">메시지 <span>(필수)</span></label><textarea id="contact-message" name="message" rows="5" required maxlength="5000" aria-describedby="message-error"></textarea><p class="field-error" id="message-error" aria-live="polite"></p></div>
+            <div class="honeypot" aria-hidden="true"><label for="contact-website">이 칸은 비워 두세요</label><input id="contact-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+            <button class="button button-primary" id="contact-submit" type="submit">입력 확인 · 전송 비활성</button>
+          </fieldset>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-layout"><p>© <span id="copyright-year">2026</span> <span data-content="footerDisplayName">이준성 | Junseong Lee</span></p><div id="social-links"><a href="https://github.com/gareal2117" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(새 창)</span>↗</a></div></div></footer>
+  <button class="button back-to-top" id="back-to-top" type="button" aria-label="페이지 맨 위로 이동" hidden>↑ <span>맨 위로</span></button>
+</body>
+</html>

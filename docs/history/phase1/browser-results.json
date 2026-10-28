@@ -1,0 +1,294 @@
+{
+  "browser": "Chrome/146.0.7680.165",
+  "actual_api": "공개 저장소 7개 · GitHub API 제공 순서",
+  "repository_name_check": {
+    "status": 404
+  },
+  "results": [
+    {
+      "name": "실제 GitHub API 연결",
+      "status": "PASS",
+      "detail": "공개 저장소 7개 · GitHub API 제공 순서"
+    },
+    {
+      "name": "실제 화면 스크린샷 3종",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "테마 새로고침 유지",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "다크 모드 버튼·aria 동기화",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 성공·map 카드·article",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API HTML 삽입 방지·URL 검증",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API null 속성 기본 문구",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "불필요한 API 중복 요청 없음",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "375px 가로 넘침 없음",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "375px 카드 Grid·메뉴 전환",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "768px 가로 넘침 없음",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "768px 카드 Grid·메뉴 전환",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "1024px 가로 넘침 없음",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "1024px 카드 Grid·메뉴 전환",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "1440px 가로 넘침 없음",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "1440px 카드 Grid·메뉴 전환",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "모바일 메뉴 열기",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "모바일 메뉴 다시 닫기",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Escape 닫기·키보드 초점 복구",
+      "status": "PASS",
+      "detail": "{'focus': 'menu-toggle', 'expanded': 'false'}"
+    },
+    {
+      "name": "키보드 Enter 메뉴 열기",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "앵커 이동·메뉴 닫기·헤더 가림 방지",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Observer 화면 진입 애니메이션",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "스크롤 기준 59px",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "스크롤 기준 60px",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "스크롤 기준 299px",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "스크롤 기준 300px",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Scroll-to-top 상단 이동",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "빈 폼 제출 방지·필드 오류·초점",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "공백만 입력 거부",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "잘못된 이메일 검사",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "input 수정 시 오류 갱신",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "정상 입력 검증·미전송 명시",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "수정 후 이전 성공 상태 해제",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API Loading UI",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API Empty UI",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API HTTP 403 오류·재시도 표시",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 403 제한 안내",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 403 재시도 실제 재호출",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API HTTP 429 오류·재시도 표시",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 429 제한 안내",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 429 재시도 실제 재호출",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API HTTP 500 오류·재시도 표시",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 500 재시도 실제 재호출",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 네트워크 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 시간 초과 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 객체 응답 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API null 응답 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API null 항목 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API JSON 파싱 오류 처리",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "API 페이지네이션",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "localStorage 읽기·쓰기 차단 복구",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Observer 미지원 시 콘텐츠 표시",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reduced-motion 스크롤·애니메이션",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "하위 경로 CSS·JS 로딩",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "현재 개인화 25항목 TBD 유지",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JavaScript 미지원 정적 콘텐츠·안전한 폼",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "미처리 JavaScript 예외·console.error 없음",
+      "status": "PASS",
+      "detail": "[]"
+    }
+  ]
+}

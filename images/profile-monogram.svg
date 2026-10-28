@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480" role="img" aria-labelledby="title desc">
+  <title id="title">JL 프로필 모노그램</title>
+  <desc id="desc">이준성의 이니셜을 표현한 네이비와 파란색 추상 그래픽. 실제 인물 사진이 아닙니다.</desc>
+  <defs><linearGradient id="blue" x2="1" y2="1"><stop stop-color="#081c45"/><stop offset=".6" stop-color="#144ac1"/><stop offset="1" stop-color="#80ccff"/></linearGradient></defs>
+  <rect width="480" height="480" rx="96" fill="url(#blue)"/>
+  <circle cx="390" cy="60" r="180" fill="none" stroke="#afdfff" stroke-opacity=".3" stroke-width="2"/>
+  <circle cx="390" cy="60" r="220" fill="none" stroke="#afdfff" stroke-opacity=".2" stroke-width="2"/>
+  <path d="M90 360h300" stroke="#a8daff" stroke-width="2"/>
+  <text x="77" y="305" fill="#fff" font-family="system-ui,sans-serif" font-size="184" font-weight="750" letter-spacing="-12">JL.</text>
+</svg>

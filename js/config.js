@@ -93,7 +93,7 @@
     "publishApproved": true,
     "pagesApproved": true,
     "emailLiveVerified": true,
-    "pagesVerified": false
+    "pagesVerified": true
   },
   "personal": {
     "displayName": {

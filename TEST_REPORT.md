@@ -1,6 +1,6 @@
 # 2차 검증 보고서
 
-최신 상태(2026-10-30): 사용자 직접 Formspree 테스트 발송·스팸함 수신 확인 완료. Hero·프로필 이니셜 `JL` 통일 및 README 체크박스 11개 삭제. 이번 실행 결과는 마지막 최신 검증 절을 따릅니다. **아래 1~10절의 미설정·BLOCKED·대기 기록은 각 검증 당시 이력**이며 현재 메일/Pages 미완료를 뜻하지 않습니다. 디자인 사용자 최종 승인 기록은 없습니다.
+최신 상태(2026-10-30): 사용자 직접 Formspree 테스트 발송·스팸함 수신 확인 완료. Hero·프로필 이니셜 `JL` 통일 및 README 체크박스 11개 삭제. 이번 실행 결과는 마지막 최신 검증 절을 따릅니다. **아래 1~11절의 미설정·BLOCKED·대기 기록은 각 검증 당시 이력**이며 현재 메일/Pages 미완료를 뜻하지 않습니다. 디자인 사용자 최종 승인 기록은 없습니다.
 
 검증일: **2026-10-28 (Asia/Seoul)**. 사용자 지정 2차 프롬프트를 읽고 기존 워크스페이스를 수정했습니다. 새 프로젝트 생성, 원격 push, 공개 배포, 외부 계정 생성, 실제 메일 발송은 수행하지 않았습니다.
 
@@ -177,3 +177,14 @@ PNG 폭은 스크롤바를 제외한 콘텐츠 폭일 수 있습니다. 실제 A
 - 남은 조치: 저장소의 Git HTTPS 인증을 복구한 뒤 main 일반 push, 자동 Pages 배포 완료 대기, 배포 자산 일치와 Chrome 검사를 재실행합니다. 성공한 경우에만 pagesVerified=true로 변경하고 소스 변경에 따른 로컬 재검증·증거 커밋을 수행합니다. 디자인 사용자 최종 승인도 별도로 필요합니다.
 - 재현: `BROWSER_BASE_URL=https://gareal2117.github.io SCREENSHOT_PREFIX=/tmp/portfolio-published- BROWSER_REPORT=/tmp/portfolio-published-results.json python3 tests/browser_checks.py`. 기존 기본 명령은 로컬 검증·README 캡처를 계속 생성합니다.
 - 최종 diff 공백 검사 및 추적/신규 텍스트 파일의 비밀키·개인 이메일·로컬 사용자 경로 검사 PASS(테스트용 qa@example.test 제외). README 체크박스 없음, README 상대 링크 대상 파일 존재 확인. 릴리스 검사는 6종 PNG 실재 여부도 검사합니다.
+
+## 12. 인증 복구 후 최신 Pages 검증 (2026-10-30)
+
+- 사용자 VS Code 로그인 완료 후 일반 push가 exit 0(Everything up-to-date)으로 응답했습니다. 원격 main=cfafbed263d42688f7dcbf2e64d69546fbe0d160 확인. 11절의 인증 차단은 이전 시도 이력이며 현재 blocker가 아닙니다.
+- [Pages 자동 배포 실행 41031479626](https://github.com/gareal2117/codyssey-b1-1-personal-portfolio/actions/runs/41031479626) success. 실제 HTML/CSS/config.js/main.js/SVG 모두 HTTP 200, 로컬 수정본 바이트 및 SHA-256 일치 확인.
+- 실제 Pages에서 기존 Chrome 전체 검사 **117 PASS / 0 FAIL**. Hero/Header JL, 이미지, API 8개 저장소, 필터·타이핑·테마·모바일 메뉴·키보드·폼 mock·반응형·콘솔 포함. 이전 배포 검사 2 FAIL은 새 배포에서 해소되었습니다. 자동 시험 메일은 추가 발송하지 않았습니다.
+- docs/pages-browser-results.json을 성공 결과로 갱신했습니다. 이 보고서의 소스 해시는 cfafbed 배포를 검증한 당시 값이며, 검증 뒤 release.pagesVerified만 true로 갱신했습니다. 현재 소스의 로컬 검증 해시는 docs/browser-results.json을 따릅니다.
+- 스크린샷 6종을 실제 Pages에서 API 로딩 후 다시 촬영하고 원본 확인했습니다. 기존 로컬 캡처와 결과 파일이 동일합니다. desktop.png·dark.png·mobile.png·mobile-dark.png는 전체 페이지, projects.png·contact.png는 구역 화면입니다. 폼은 빈 상태이며 개인정보가 없습니다. 축소 미리보기에서 일부 글자가 빠져 보였지만 원본 영역 확대에서 Hero·프로필 JL이 정상임을 확인하여 코드/캡처 도구 추가 수정은 하지 않았습니다.
+- Pages 검증 성공 후 pagesVerified=true를 반영합니다. emailLiveVerified=true는 사용자 직접 발송·스팸함 수신 확인이며, designApproved=false는 최종 승인 기록 부재로 유지합니다. 전체 릴리스의 남은 BLOCKED는 디자인 사용자 시각 검토입니다.
+
+설정 갱신 후 로컬 Chrome도 116 PASS / 0 FAIL로 완료했고 소스 해시를 갱신했습니다. 정적 검사·로컬 릴리스·diff 및 민감정보 검사 PASS. 전체 릴리스는 디자인 사용자 시각 검토만 BLOCKED(exit 2)이며 우회하지 않았습니다.

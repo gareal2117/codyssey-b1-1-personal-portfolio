@@ -1,5 +1,12 @@
 {
   "phase": 2,
+  "sourceHashes": {
+    "index.html": "45b45ad6d820fd1e461419c7b264c4b1e4c08a775152e5d1ab78baac32eb943e",
+    "css/style.css": "d2b839fdd612b031a9377371a0d1e52fb9d2941e69384e849bf77551cda742b0",
+    "js/config.js": "ba24f03baa51e0dfb05240c66e93d788b0b869a8c1e8b7a71a6805e952b6f668",
+    "js/main.js": "bb3fab3566fde1a10501a6f8f9e03b2373839f6185237509bd6b8e99a5395094",
+    "images/profile-monogram.svg": "947d8a744965a16e8ee5a4decfd98b1e7df9ff7ac307980225457fcd16599fa5"
+  },
   "contrast": {
     "light": 5.53,
     "dark": 7.51
@@ -30,12 +37,12 @@
     },
     {
       "name": "Hero 이니셜 JL",
-      "status": "FAIL",
+      "status": "PASS",
       "detail": ""
     },
     {
       "name": "배포 HTML·CSS·JS·SVG 해시가 로컬 검증 소스와 일치",
-      "status": "FAIL",
+      "status": "PASS",
       "detail": ""
     },
     {
@@ -598,13 +605,5 @@
       "status": "PASS",
       "detail": "[]"
     }
-  ],
-  "comparisonLocalSourceHashes": {
-    "index.html": "45b45ad6d820fd1e461419c7b264c4b1e4c08a775152e5d1ab78baac32eb943e",
-    "css/style.css": "d2b839fdd612b031a9377371a0d1e52fb9d2941e69384e849bf77551cda742b0",
-    "js/config.js": "ba24f03baa51e0dfb05240c66e93d788b0b869a8c1e8b7a71a6805e952b6f668",
-    "js/main.js": "bb3fab3566fde1a10501a6f8f9e03b2373839f6185237509bd6b8e99a5395094",
-    "images/profile-monogram.svg": "947d8a744965a16e8ee5a4decfd98b1e7df9ff7ac307980225457fcd16599fa5"
-  },
-  "verificationScope": "Existing public deployment before this change; two failures mean pending publication, not successful verification of local changes. Captures are temporary /tmp/portfolio-published-*.png; README uses the new local captures."
+  ]
 }

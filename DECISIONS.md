@@ -58,3 +58,7 @@
 ### 원격 게시 결과
 
 로컬 일반 커밋 `09ee4b2`를 생성했으나 `git push origin main`은 HTTPS 인증 부재로 실패했습니다. 연결된 GitHub 도구는 저장소 메타데이터의 push 권한과 달리 실제 blob 생성에서 403(Resource not accessible by integration)을 반환했습니다. 원격 ref 변경이나 강제 push는 수행하지 않았습니다. Git 인증 복구 후 일반 push와 최신 배포 재검증이 필요하며, 그 전에는 pagesVerified=false를 유지합니다.
+
+### 인증 복구 후 배포 검증 완료 (2026-10-30)
+
+사용자가 VS Code GitHub 로그인을 완료했다고 알린 뒤 일반 push가 성공 응답(Everything up-to-date)했으며 원격 main이 cfafbed까지 반영된 것을 확인했습니다. Pages 실행 41031479626은 success입니다. 실제 배포 5개 자산이 로컬과 일치하고 원격 Chrome 117 PASS / 0 FAIL을 확인한 뒤에만 pagesVerified=true로 변경했습니다. 이전 인증 차단은 과거 시도 이력으로 보존합니다. 디자인 승인 값은 false 유지, 실제 메일 추가 발송 없음입니다.

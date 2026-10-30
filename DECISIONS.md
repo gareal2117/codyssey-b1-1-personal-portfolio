@@ -54,3 +54,7 @@
 - 디자인 사용자 최종 승인 기록은 없으므로 `designApproved=false`를 유지합니다. 코드·Pages 배포 승인은 최종 수정 요청으로 재확인했습니다.
 - README 마지막 체크박스 11개만 삭제하며 학습 강의노트·요구사항 표·검증 증거는 보존합니다. 체크리스트 삭제는 전체 완료 판정이 아닙니다.
 - Hero·프로필 SVG 이니셜을 `JL`로 통일합니다. CSS 및 main.js를 변경하지 않아 크기·위치·색상·애니메이션 정의는 보존합니다.
+
+### 원격 게시 결과
+
+로컬 일반 커밋 `09ee4b2`를 생성했으나 `git push origin main`은 HTTPS 인증 부재로 실패했습니다. 연결된 GitHub 도구는 저장소 메타데이터의 push 권한과 달리 실제 blob 생성에서 403(Resource not accessible by integration)을 반환했습니다. 원격 ref 변경이나 강제 push는 수행하지 않았습니다. Git 인증 복구 후 일반 push와 최신 배포 재검증이 필요하며, 그 전에는 pagesVerified=false를 유지합니다.

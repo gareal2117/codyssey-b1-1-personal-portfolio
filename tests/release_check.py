@@ -22,7 +22,7 @@ if report.get('phase') != 2 or any(r['status'] != 'PASS' for r in report['result
 for name in ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']:
     digest = hashlib.sha256((root/name).read_bytes()).hexdigest()
     if report.get('sourceHashes', {}).get(name) != digest: errors.append(f'검사 이후 소스 변경: {name}')
-for name in ['desktop.png','mobile.png','dark.png']:
+for name in ['desktop.png','mobile.png','dark.png','mobile-dark.png','projects.png','contact.png']:
     path = root/'docs/screenshots'/name
     if not path.exists() or path.read_bytes()[:8] != b'\x89PNG\r\n\x1a\n': errors.append(f'실제 PNG 없음: {name}')
 for name in ['README.md','DECISIONS.md','TEST_REPORT.md','docs/REQUIREMENTS_MATRIX.md','docs/EMAIL_SETUP.md']:

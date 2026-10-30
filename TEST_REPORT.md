@@ -167,3 +167,13 @@ PNG 폭은 스크롤바를 제외한 콘텐츠 폭일 수 있습니다. 실제 A
 - 로컬 릴리스 PASS(exit 0). 전체 릴리스는 최신 Pages 검증 및 디자인 최종 승인 전 BLOCKED(exit 2)로 정상 차단됩니다. 우회하지 않았습니다.
 - `docs/screenshots/desktop.png`, `dark.png`, `mobile.png`, `mobile-dark.png`, `projects.png`, `contact.png` 6종을 실제 API 로딩 후 **로컬**에서 촬영하고 열어 확인했습니다. 이미지 손상·가로 잘림·깨진 프로필 없음. Contact 입력란은 비어 있습니다. Projects 캡처는 섹션 상단이며 전체 카드는 전체 페이지 캡처에 포함됩니다.
 - 샌드박스 내부 DNS와 로컬 서버 바인딩 제한은 승인된 외부 실행으로 해결했습니다. 앱 오류가 아닙니다. 실제 스크린리더·다른 브라우저/실기기 및 VS Code 확장 UI 조작은 검증 범위 밖입니다.
+
+### 원격 게시 시도 및 실제 Pages 재점검
+
+- 로컬 일반 커밋 `09ee4b2` 생성 성공. `git push origin main`은 `could not read Username for https://github.com`으로 실패했습니다. GitHub 연결 도구의 저장소 메타데이터는 push=true였으나 실제 blob 쓰기는 **403 Resource not accessible by integration**으로 거부되었습니다. 원격 branch/ref는 변경하지 않았고 강제 push·이력 초기화도 수행하지 않았습니다.
+- 실제 기존 Pages를 `BROWSER_BASE_URL=https://gareal2117.github.io`로 기존 Chrome 검사에 연결하여 재점검했습니다. **115 PASS / 2 FAIL**(exit 1). 실패는 Hero에 남은 `JL.` 및 배포 HTML/CSS/JS/SVG 해시와 새 로컬 소스의 불일치입니다. 이는 수정본이 아직 push되지 않았다는 실제 증거이며 테스트를 무조건 성공시키지 않았습니다. 메뉴·테마·실제 API·필터·타이핑·빈 폼 및 mock 전송·키보드·양 테마 4개 너비·이미지·콘솔 검사는 통과했습니다.
+- [현재 배포 검사 JSON](./docs/pages-browser-results.json)의 comparisonLocalSourceHashes는 비교 대상 로컬 해시이며 배포된 해시라고 주장하지 않습니다. 과거 배포 캡처는 `/tmp`에 분리했고 README에는 최신 로컬 캡처 6종만 연결했습니다.
+- 최종 설정: pagesUrl은 실제 URL, pagesApproved=true, emailLiveVerified=true, **pagesVerified=false**, **designApproved=false**. 현재 사이트 접속은 성공하지만 이번 변경의 최신 배포 검증은 미완료입니다.
+- 남은 조치: 저장소의 Git HTTPS 인증을 복구한 뒤 main 일반 push, 자동 Pages 배포 완료 대기, 배포 자산 일치와 Chrome 검사를 재실행합니다. 성공한 경우에만 pagesVerified=true로 변경하고 소스 변경에 따른 로컬 재검증·증거 커밋을 수행합니다. 디자인 사용자 최종 승인도 별도로 필요합니다.
+- 재현: `BROWSER_BASE_URL=https://gareal2117.github.io SCREENSHOT_PREFIX=/tmp/portfolio-published- BROWSER_REPORT=/tmp/portfolio-published-results.json python3 tests/browser_checks.py`. 기존 기본 명령은 로컬 검증·README 캡처를 계속 생성합니다.
+- 최종 diff 공백 검사 및 추적/신규 텍스트 파일의 비밀키·개인 이메일·로컬 사용자 경로 검사 PASS(테스트용 qa@example.test 제외). README 체크박스 없음, README 상대 링크 대상 파일 존재 확인. 릴리스 검사는 6종 PNG 실재 여부도 검사합니다.

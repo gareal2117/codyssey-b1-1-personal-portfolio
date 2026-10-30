@@ -33,7 +33,7 @@
 | LOCAL_VERIFIED | 최신 실제 검증 결과는 [TEST_REPORT](./TEST_REPORT.md) 및 [JSON](./docs/browser-results.json) 참조 |
 | EMAIL_LIVE_VERIFIED | PASS — 사용자가 실제 발송 및 스팸함 수신을 직접 확인 (2026-10-30) |
 | GITHUB_PAGES_VERIFIED | 실제 URL 접속 HTTP 200 확인; 최종 수정 배포 검증 결과는 TEST_REPORT 참조 |
-| SUBMISSION_READY | BLOCKED — 디자인 사용자 최종 승인 기록 없음 |
+| SUBMISSION_READY | BLOCKED — 이번 수정의 push·최신 배포 검증 및 디자인 최종 승인 필요 |
 
 개인화는 승인된 25개 키를 유지하고 [DECISIONS](./DECISIONS.md)에 추적합니다. Blueberry Signal은 색조를 참조한 제안 디자인입니다. 상표 이미지나 기타 사진을 복제하지 않았고, 디자인의 최종 시각 승인까지 받았다고 주장하지 않습니다. 프로필은 실물 사진 대신 직접 작성한 `JL` 모노그램 SVG입니다.
 
@@ -574,10 +574,10 @@ console.log(pythonItems, practiceItems.length);
 - Pages URL: https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/
 - 기존 Pages의 main / (root) 자동 배포 설정을 유지합니다. 2026-10-30 현재 사이트 접속은 HTTP 200이며, 이번 수정의 배포·기능 확인은 TEST_REPORT의 최신 절에 기록합니다.
 
-아래 캡처는 실제 API 로딩 완료 후 생성했습니다. 로컬 캡처와 배포 캡처의 출처는 TEST_REPORT의 최신 절에서 구분합니다. 디자인은 사용자 최종 승인 전입니다.
+아래 6종은 실제 API 로딩 완료 후 생성한 **로컬 캡처**입니다. Git 인증 문제로 이번 변경은 아직 배포되지 않았습니다. 배포 확인 결과는 TEST_REPORT의 최신 절을 따르며, 디자인은 사용자 최종 승인 전입니다.
 
 ![데스크톱 포트폴리오 실제 화면](./docs/screenshots/desktop.png)
 
 [모바일 라이트](./docs/screenshots/mobile.png) · [데스크톱 다크](./docs/screenshots/dark.png) · [모바일 다크](./docs/screenshots/mobile-dark.png) · [Projects](./docs/screenshots/projects.png) · [Contact](./docs/screenshots/contact.png)
 
-Formspree 실제 수신은 사용자 확인 완료이며 추가 발송하지 않습니다. 디자인 최종 승인 기록이 없어 전체 릴리스는 BLOCKED로 유지합니다.
+Formspree 실제 수신은 사용자 확인 완료이며 추가 발송하지 않습니다. 이번 수정의 push·최신 배포 검증과 디자인 최종 승인이 남아 있어 전체 릴리스는 BLOCKED로 유지합니다.

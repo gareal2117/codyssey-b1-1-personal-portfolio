@@ -44,9 +44,9 @@
 | J1. 프로젝트 설명·학습 README·19절·실습·복습 | README 0~18 | 목차/실제 함수·선택자·수치 대조 | PASS | 11개 실습, 15개 설명형 문제와 해설 |
 | J2. desktop/mobile/dark 실제 캡처 | docs/screenshots | 실제 화면 스크린샷 6종 | PASS | 실제 API 응답으로 캡처, fixture는 이후에 주입 |
 | J3. 실제 GitHub 저장소 URL·origin·rename | Git 현황·인증 API | 기존 빈 포트폴리오 rename, origin 연결, 실제 URL 확인 | PASS | gareal2117/codyssey-b1-1-personal-portfolio; Pages 접속은 사용자 확인 완료 |
-| J4. 작동 Pages URL·공개 승인·제출 완료 | release 설정; README18 | Pages HTTP 200; 최신 배포 검증은 TEST_REPORT 참조 | BLOCKED | 실제 URL은 README 18절; 제출 완료는 디자인 최종 승인 기록 없음으로 차단 |
+| J4. 작동 Pages URL·공개 승인·제출 완료 | release 설정; README18 | 기존 Pages HTTP 200, 이번 변경 push 인증 차단 | BLOCKED | 실제 URL은 README 18절; pagesVerified=false, 디자인 최종 승인 기록도 없음 |
 
-요구사항 행 집계(브라우저 테스트 개수와 다름): PASS 39, PARTIAL 1, FAIL 0, BLOCKED 1. I3b는 사용자 수신 확인으로 갱신했으며 J4의 전체 제출은 디자인 최종 승인 전입니다.
+요구사항 행 집계(브라우저 테스트 개수와 다름): PASS 39, PARTIAL 1, FAIL 0, BLOCKED 1. I3b는 사용자 수신 확인으로 갱신했으며 J4는 이번 변경의 원격 반영 및 최신 배포 검증·디자인 최종 승인 전입니다.
 
 증거: [브라우저 JSON](./browser-results.json), [검증 보고서](../TEST_REPORT.md), [README 검증](./readme-verification.json), [사용자 결정](../DECISIONS.md).
 

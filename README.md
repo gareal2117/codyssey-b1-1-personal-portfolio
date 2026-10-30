@@ -15,7 +15,7 @@
 | 동작 원리 | 5~8 | 이벤트, 상태, 렌더링과 테마 우선순위 설명 |
 | 외부 데이터 | 9~11 | 비동기 요청, 필터, 입력 검증과 실제 전송 구별 |
 | 품질·배포 | 12~15 | 오류 재현, 검증 증거, Git/Pages 경로 이해 |
-| 직접 재현 | 16~18 | 최소 실습·복습 질문·제출 점검 |
+| 직접 재현 | 16~18 | 최소 실습·복습 질문·제출 정보 |
 
 먼저 알아둘 용어: **DOM**은 HTML을 브라우저가 객체 트리로 만든 것, **이벤트**는 클릭 같은 발생 사실, **상태**는 현재 선택/요청 결과를 담은 값, **렌더링**은 그 값을 화면에 반영하는 과정입니다. **API**는 외부 서비스와 데이터를 주고받는 규칙입니다. 자세한 용어는 17절에서 다시 설명합니다.
 
@@ -31,17 +31,17 @@
 | --- | --- |
 | LOCAL_IMPLEMENTATION | 필수 기능과 보너스 4개의 로컬 코드 구현 |
 | LOCAL_VERIFIED | 최신 실제 검증 결과는 [TEST_REPORT](./TEST_REPORT.md) 및 [JSON](./docs/browser-results.json) 참조 |
-| EMAIL_LIVE_VERIFIED | BLOCKED — Formspree 설정 완료, 실제 발송·수신은 사용자 확인 전 |
-| GITHUB_PAGES_VERIFIED | 기존 배포 확인, 이번 수정의 자동 재배포 결과 확인 필요 |
-| SUBMISSION_READY | BLOCKED — 실전 메일·Pages·디자인/배포 승인 필요 |
+| EMAIL_LIVE_VERIFIED | PASS — 사용자가 실제 발송 및 스팸함 수신을 직접 확인 (2026-10-30) |
+| GITHUB_PAGES_VERIFIED | 실제 URL 접속 HTTP 200 확인; 최종 수정 배포 검증 결과는 TEST_REPORT 참조 |
+| SUBMISSION_READY | BLOCKED — 디자인 사용자 최종 승인 기록 없음 |
 
-개인화는 승인된 25개 키를 유지하고 [DECISIONS](./DECISIONS.md)에 추적합니다. Blueberry Signal은 색조를 참조한 제안 디자인입니다. 상표 이미지나 기타 사진을 복제하지 않았고, 디자인의 최종 시각 승인까지 받았다고 주장하지 않습니다. 프로필은 실물 사진 대신 직접 작성한 `JL.` 모노그램 SVG입니다.
+개인화는 승인된 25개 키를 유지하고 [DECISIONS](./DECISIONS.md)에 추적합니다. Blueberry Signal은 색조를 참조한 제안 디자인입니다. 상표 이미지나 기타 사진을 복제하지 않았고, 디자인의 최종 시각 승인까지 받았다고 주장하지 않습니다. 프로필은 실물 사진 대신 직접 작성한 `JL` 모노그램 SVG입니다.
 
-정적 파일은 브라우저에서 실행되고 GitHub API는 저장소 정보를 제공하며 Formspree가 문의 처리를 담당합니다. 사용자 제공 공개 ID `mdeezyjq`와 `email.enabled=true`를 적용했습니다. 방문자가 제출하면 `https://formspree.io/f/mdeezyjq`로 요청합니다. 실제 시험 메일은 자동 발송하지 않았으며 사용자가 배포 사이트에서 발송·수신을 확인해야 합니다. Header 로고는 `JL`이며 Hero·프로필 그래픽은 유지했습니다.
+정적 파일은 브라우저에서 실행되고 GitHub API는 저장소 정보를 제공하며 Formspree가 문의 처리를 담당합니다. 사용자 제공 공개 ID `mdeezyjq`와 `email.enabled=true`를 적용했습니다. 방문자가 제출하면 `https://formspree.io/f/mdeezyjq`로 요청합니다. 사용자가 실제 테스트 메시지 발송과 스팸함 수신을 직접 확인했습니다(2026-10-30 사용자 보고). 이번 자동 검사는 mock만 사용하며 추가 메일은 발송하지 않습니다. Header·Hero·프로필 이니셜은 모두 `JL`입니다. 수신 주소와 메시지 원문은 공개하지 않습니다.
 
 ## 2. 개발 환경, 실행 경로와 디렉터리
 
-VS Code에서 **현재 my-portfolio 폴더 자체**를 엽니다. Live Server 확장이 있다면 `index.html` 우클릭 → Open with Live Server를 실행합니다. 표시된 로컬 URL을 브라우저에서 엽니다. 확장 UI를 자동으로 조작해 검증한 것은 아니며, 테스트에서는 같은 정적 파일을 Python HTTP 서버로 제공했습니다.
+VS Code에서 **현재 codyssey-b1-1-personal-portfolio 폴더 자체**를 엽니다. Live Server 확장이 있다면 `index.html` 우클릭 → Open with Live Server를 실행합니다. 표시된 로컬 URL을 브라우저에서 엽니다. 확장 UI를 자동으로 조작해 검증한 것은 아니며, 테스트에서는 같은 정적 파일을 Python HTTP 서버로 제공했습니다.
 
 대안 명령은 프로젝트 폴더의 터미널에서 실행합니다.
 
@@ -58,7 +58,7 @@ py -m http.server 5500 --bind 127.0.0.1
 그다음 `http://127.0.0.1:5500`을 엽니다. 종료는 해당 터미널에서 Ctrl+C입니다. 위 명령은 실행 방법이며 과거 로그가 아닙니다. `file://`로 파일을 직접 열면 origin·저장소·네트워크 동작이 HTTP와 달라질 수 있으므로 HTTP 실행을 기준으로 확인합니다.
 
 ```text
-my-portfolio/
+codyssey-b1-1-personal-portfolio/
 ├── index.html                 문서 구조와 JS 없는 환경의 완전한 대체 문구
 ├── css/style.css              기본 UI, Blueberry 표현, 반응형·테마
 ├── js/config.js               개인화 25개, GitHub/README 캐시, 메일·공개 상태
@@ -75,7 +75,7 @@ my-portfolio/
 │   ├── personalization-contract.json 사용자 승인 값의 비교 기준
 │   ├── readme-verification.json README 실제 경로·브랜치 기록
 │   ├── browser-results.json   최신 실행이 생성한 결과와 소스 해시
-│   ├── screenshots/           desktop.png, mobile.png, dark.png
+│   ├── screenshots/           desktop.png, mobile.png, dark.png 외 3종
 │   └── history/phase1/        1차 문서·57개 결과·캡처 보존
 ├── DECISIONS.md
 ├── TEST_REPORT.md
@@ -361,7 +361,7 @@ const response = await fetch(`https://formspree.io/f/${email.formId}`, {
 
 공개 이메일 비표시와 실제 문의 수신은 양립합니다. 사용자가 서비스에서 폼을 생성했고 공개 ID를 연결했습니다. 방문자의 입력은 제출 시 Formspree와 수신자에게 전달된다는 고지를 표시합니다. 실제 수신 확인은 사용자에게 남겨 두었습니다. 스팸 방어는 honeypot, 중복 잠금, 길이 제한 및 서비스 측 보호를 함께 사용합니다. 브라우저 검사는 우회 가능하므로 서버 보호가 필요합니다.
 
-**확인:** 빈 폼·공백·잘못된 이메일을 제출하고 오류 위치/초점을 보세요. mock 성공과 실제 발송·수신 검증은 분리합니다. 서비스 계정·수신 설정·공개 ID·테스트 한 건 승인·수신함 확인은 [EMAIL_SETUP.md](./docs/EMAIL_SETUP.md)의 단계대로 진행하며, 현재 보너스의 실전 완료 상태는 BLOCKED입니다.
+**확인:** 빈 폼·공백·잘못된 이메일을 제출하고 오류 위치/초점을 보세요. mock 성공과 실제 발송·수신 검증은 분리합니다. 서비스 계정·수신 설정·공개 ID·테스트 한 건 승인·수신함 확인은 [EMAIL_SETUP.md](./docs/EMAIL_SETUP.md)의 단계대로 진행하며, 사용자가 실제 발송·스팸함 수신을 직접 확인하여 현재 실전 상태는 PASS입니다. 자동 검사는 추가 발송하지 않습니다.
 
 ## 12. 접근성, 안전성과 성능
 
@@ -400,7 +400,7 @@ fixture는 시험용 데이터, mock/stub은 외부 동작을 대신하는 제�
 
 1차 57개 검사는 [과거 JSON](./docs/history/phase1/browser-results.json)에 고정 보존했습니다. 2차에서는 TBD 강제 검사를 25개 승인 ID/값/UI 일치 검사로, 미전송 검증 성공을 서비스 미설정 안내 검사로 바꾸었습니다. 카드 순서 가정과 h3 선택자는 이름 정렬과 h4 구조에 맞춰 수정했고, 하위 경로는 실제 목표 저장소 이름으로 바꿨습니다. 핵심 메뉴/스크롤/API/폼 회귀 목적은 유지하고 필터/타이핑/README/메일/시스템 테마/이미지 검증을 추가했습니다.
 
-**결과 해석:** PASS는 해당 검사 실행이 성공했다는 뜻입니다. PARTIAL은 범위 일부만 확인, FAIL은 실제 실패, BLOCKED는 외부 설정·승인 필요입니다. 로컬 release 검사는 0이면 통과합니다. 전체 release 검사는 현재 외부 조건 때문에 종료 코드 **2(BLOCKED)**가 정상입니다. 소스 변경 후 브라우저를 다시 검사하지 않으면 해시 불일치로 코드 1이 나와 오래된 결과를 재사용하지 못합니다.
+**결과 해석:** PASS는 해당 검사 실행이 성공했다는 뜻입니다. PARTIAL은 범위 일부만 확인, FAIL은 실제 실패, BLOCKED는 외부 설정·승인 필요입니다. 로컬 release 검사는 0이면 통과합니다. 전체 release 검사는 현재 디자인 최종 승인 기록이 없어 종료 코드 **2(BLOCKED)**가 정상입니다. 소스 변경 후 브라우저를 다시 검사하지 않으면 해시 불일치로 코드 1이 나와 오래된 결과를 재사용하지 못합니다.
 
 ### 브라우저에서 오류를 직접 재현하기
 
@@ -448,16 +448,16 @@ git diff --cached --stat
 
 2차 개발 당시 목표 저장소의 공개 조회는 404였습니다. 후속 코드 게시 승인과 인증 후, 원격 참조가 없는 빈 `gareal2117/my-portfolio`를 `gareal2117/codyssey-b1-1-personal-portfolio`로 이름 변경해 재사용했습니다. 다른 과제 저장소는 변경하지 않았습니다.
 
-push는 공개 범위에 따라 코드가 외부에 게시되는 동작입니다. force push는 기존 원격 이력을 덮을 수 있어 사용하지 않습니다. 코드 커밋·일반 push는 승인되었고 Pages는 독립 코드 검토 이후로 보류했습니다. 현재 커밋과 원격 일치는 `git log -1`과 `git ls-remote origin refs/heads/main`으로 확인할 수 있습니다.
+push는 공개 범위에 따라 코드가 외부에 게시되는 동작입니다. force push는 기존 원격 이력을 덮을 수 있어 사용하지 않습니다. 코드 커밋·일반 push와 Pages 배포는 승인되었으며, 사용자가 기존 공개 사이트 접속도 확인했습니다. 현재 커밋과 원격 일치는 `git log -1`과 `git ls-remote origin refs/heads/main`으로 확인할 수 있습니다.
 
-### 승인 이후 배포 체크리스트
+### 배포 절차 참고 (초기 설정 완료)
 
 1. 사용자가 기존 `my-portfolio`가 이 프로젝트용인지 확인하고 rename 또는 새 저장소 생성 방식을 결정합니다. 중복 생성/삭제 없이 목표 이름 충돌을 확인합니다.
 2. 디자인과 공개 코드 범위를 검토하고 원격 게시·Pages 배포를 승인합니다. 현재 `.git`을 다시 초기화할 필요는 없습니다.
 3. 실제 소유 저장소 URL을 확인한 뒤에만 origin을 연결/갱신하고 변경 파일을 검토하여 add/commit합니다. 대상 불명확 상태에서 remote 명령을 추측 실행하지 않습니다.
 4. 승인된 브랜치를 일반 push합니다. 이후 Settings → Pages에서 브랜치 기반 배포의 main / (root)를 선택합니다. `index.html`은 배포 소스 루트에 있어야 합니다. [공식 Pages 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
 5. 성공한 배포가 표시한 **실제 URL**을 엽니다. HTML뿐 아니라 CSS/JS/SVG의 상태 코드, 앵커/메뉴/API/폼/테마를 점검합니다.
-6. 375/768/1024/1440px, light/dark, 콘솔, 승인된 메일 실전 시험을 확인하고 실제 URL·최신 캡처·증거를 문서와 release 설정에 갱신합니다.
+6. 375/768/1024/1440px, light/dark, 콘솔, mock 폼 검증을 확인하고 실제 URL·최신 캡처·증거를 문서와 release 설정에 갱신합니다.
 
 배포 후 오래된 화면은 브라우저 캐시일 수 있습니다. DevTools Disable cache와 강력 새로고침을 먼저 확인하고, GitHub 배포 작업이 실제로 성공했는지 봅니다. 프로젝트 페이지의 CSS가 404라면 `/css/...`처럼 루트 기준 경로를 썼는지도 확인하세요.
 
@@ -564,7 +564,7 @@ console.log(pythonItems, practiceItems.length);
 | fixture/mock | 재현 가능한 테스트 데이터 / 외부 동작을 대신하는 시험용 구현 |
 | XSS | 외부 문자열이 의도치 않은 스크립트로 실행되는 보안 문제 |
 
-## 18. 제출 정보와 최종 체크리스트
+## 18. 제출 정보와 최신 검증
 
 - 이름: **이준성 | Junseong Lee**
 - 기술: HTML5, CSS3, Vanilla JavaScript, GitHub REST API, Formspree fetch 통합 코드.
@@ -572,24 +572,12 @@ console.log(pythonItems, practiceItems.length);
 - 실제 저장소: https://github.com/gareal2117/codyssey-b1-1-personal-portfolio
 - 기존 `my-portfolio`를 목표 이름으로 변경하고 origin을 연결했습니다.
 - Pages URL: https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/
-- 후속 확인에서 기존 Pages가 main / (root) 기반으로 배포되어 있음을 확인했습니다. 설정은 유지하며 이번 push 이후 자동 재배포 결과와 새 설정 반영을 확인해야 합니다.
+- 기존 Pages의 main / (root) 자동 배포 설정을 유지합니다. 2026-10-30 현재 사이트 접속은 HTTP 200이며, 이번 수정의 배포·기능 확인은 TEST_REPORT의 최신 절에 기록합니다.
 
-최신 로컬 캡처는 실제 API 데이터를 표시한 화면입니다. 디자인은 사용자 시각 검토 전이며, 실제 배포 완료 화면을 뜻하지 않습니다.
+아래 캡처는 실제 API 로딩 완료 후 생성했습니다. 로컬 캡처와 배포 캡처의 출처는 TEST_REPORT의 최신 절에서 구분합니다. 디자인은 사용자 최종 승인 전입니다.
 
 ![데스크톱 포트폴리오 실제 화면](./docs/screenshots/desktop.png)
 
-[모바일 화면](./docs/screenshots/mobile.png) · [다크 모드 화면](./docs/screenshots/dark.png)
+[모바일 라이트](./docs/screenshots/mobile.png) · [데스크톱 다크](./docs/screenshots/dark.png) · [모바일 다크](./docs/screenshots/mobile-dark.png) · [Projects](./docs/screenshots/projects.png) · [Contact](./docs/screenshots/contact.png)
 
-- [x] 필수 섹션과 보너스 코드 구현, 실제 프로필 그래픽 준비
-- [x] 25개 승인 콘텐츠 적용, 공개 이메일·전화번호 미표시
-- [x] 로컬 정적·Chrome 검사와 모의 메일 시험 수행
-- [x] README 자습 교재·요구사항 표·검증 기록·캡처 준비
-- [ ] 디자인 시각 검토 및 최종 승인
-- [ ] Formspree 외부 설정, 테스트 한 건 발송 승인 및 실제 수신 확인
-- [x] 기존 포트폴리오 저장소 식별, 이름 변경 및 원격 연결
-- [x] 코드 커밋·공개 push 승인
-- [ ] 독립 코드 검토 후 GitHub Pages 배포 승인
-- [ ] 실제 배포 URL에서 기능·에셋·모바일·다크·폼 재검증
-- [ ] 실제 URL과 최종 증빙으로 문서·release 기록 갱신
-
-로컬 구현 완료와 전체 과제 제출 완료를 구분합니다. 마지막 외부 단계가 BLOCKED인 동안에는 전체 완료로 판정하지 않습니다.
+Formspree 실제 수신은 사용자 확인 완료이며 추가 발송하지 않습니다. 디자인 최종 승인 기록이 없어 전체 릴리스는 BLOCKED로 유지합니다.

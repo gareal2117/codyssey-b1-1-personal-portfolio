@@ -81,8 +81,13 @@ app_source = '\n'.join((ROOT/name).read_text() for name in ['index.html','js/con
 assert not re.search(r'(?:ghp_|github_pat_|sk-proj-|AKIA)[A-Za-z0-9_-]{12,}', app_source), '비밀키 형태'
 assert not re.search(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', app_source), '공개 이메일 문자열'
 assert data['email']['enabled'] is True and data['email']['formId'] == 'mdeezyjq', '승인된 Formspree 설정 불일치'
-assert data['release']['emailLiveVerified'] is False, '실제 발송/수신은 사용자 확인 전'
+assert data['release']['emailLiveVerified'] is True, '사용자가 실제 발송·스팸함 수신을 직접 확인한 상태'
+assert data['release']['pagesUrl'] == 'https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/'
+assert data['release']['pagesApproved'] is True
+assert data['release']['designApproved'] is False, '사용자 디자인 최종 승인 기록 없음'
+assert not re.search(r'\bJL\.', html), '이니셜 마침표 잔존'
 svg = ET.parse(ROOT / records['profileImage']['value']['src']).getroot()
+assert ''.join(svg.itertext()).find('JL.') == -1, '프로필 이니셜 마침표 잔존'
 for element in svg.iter():
     assert element.tag.split('}')[-1] not in ('script', 'foreignObject', 'image', 'use')
     assert not any(k.lower().startswith('on') or 'href' in k for k in element.attrib)

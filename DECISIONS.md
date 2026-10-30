@@ -2,7 +2,7 @@
 
 사용자가 실행하도록 지정한 2차 프롬프트의 25개 키/값을 적용했습니다. 1차 TBD 기록은 docs/history/phase1/DECISIONS.md에 보존했습니다.
 
-25개 항목은 CONFIRMED(사용자 2차 프롬프트) → APPLIED(코드 적용) → VERIFIED(새 Chrome·승인 계약 검사)로 진행했습니다. VERIFIED는 로컬 적용 검증입니다. 디자인 동작 검증은 사용자의 시각적 최종 승인과 다르며, `release.designApproved`는 false입니다. 이메일 실전 발송·공개 게시도 별도입니다.
+25개 항목은 CONFIRMED(사용자 2차 프롬프트) → APPLIED(코드 적용) → VERIFIED(새 Chrome·승인 계약 검사)로 진행했습니다. VERIFIED는 로컬 적용 검증입니다. 디자인 동작 검증은 사용자의 시각적 최종 승인과 다르며, `release.designApproved`는 false입니다. 이메일 실전 발송·공개 게시도 별도이며 최신 상태는 마지막 후속 기록을 따릅니다.
 
 | 항목 ID | 키 | 상태 | 결정 내용 | 영향 영역 / 적용 방법 |
 | --- | --- | --- | --- | --- |
@@ -46,3 +46,11 @@
 ## Formspree·Header 후속 변경
 
 사용자가 공개 Form ID `mdeezyjq`의 활성화를 승인하여 enabled=true를 적용했습니다. 비밀키나 수신 이메일은 추가하지 않았습니다. Header는 `JL.`에서 `JL`로 변경하고 색상·크기·폰트·위치·Home 링크는 유지했습니다. 실제 시험 메일은 발송하지 않으며 emailLiveVerified=false를 유지합니다. 기존 Pages의 main / (root) 자동 배포 설정은 변경하지 않습니다. 이번 push의 재배포 결과와 실제 메일 수신은 별도로 확인합니다.
+
+## 2026-10-30 최종 정리
+
+- 사용자가 저장소 공개·push, Pages 접속, Formspree `mdeezyjq` 연결 및 실제 메시지 발송·스팸함 수신을 직접 확인했다고 보고했습니다. `emailLiveVerified=true`, `pagesApproved=true`, 실제 `pagesUrl`을 반영합니다. 수신 주소·메시지 원문은 기록하지 않고 추가 실제 발송도 하지 않습니다.
+- 위 과거 절의 빈 ID·메일 미확인·Pages 미승인·미배포는 당시 이력입니다. 최신 배포 검증 결과는 TEST_REPORT에 기록하며 성공한 경우에만 `pagesVerified=true`로 변경합니다.
+- 디자인 사용자 최종 승인 기록은 없으므로 `designApproved=false`를 유지합니다. 코드·Pages 배포 승인은 최종 수정 요청으로 재확인했습니다.
+- README 마지막 체크박스 11개만 삭제하며 학습 강의노트·요구사항 표·검증 증거는 보존합니다. 체크리스트 삭제는 전체 완료 판정이 아닙니다.
+- Hero·프로필 SVG 이니셜을 `JL`로 통일합니다. CSS 및 main.js를 변경하지 않아 크기·위치·색상·애니메이션 정의는 보존합니다.

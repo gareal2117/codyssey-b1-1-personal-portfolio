@@ -35,7 +35,7 @@ release = config['release']
 blocked = []
 if not config['email']['enabled'] or not config['email']['formId'] or not release['emailLiveVerified']: blocked.append('EMAIL_LIVE_VERIFIED: 서비스 설정 및 실제 발송/수신 확인')
 if not release['repositoryUrl']: blocked.append('실제 목표 GitHub 저장소 확인 및 연결')
-if not release['pagesUrl'] or not release['pagesVerified']: blocked.append('GITHUB_PAGES_VERIFIED: 실제 배포 URL과 동작 확인')
+if not release['pagesUrl'] or not release['pagesVerified'] or not release['pagesApproved']: blocked.append('GITHUB_PAGES_VERIFIED: 실제 배포 URL과 동작 확인')
 if not release['designApproved']: blocked.append('디자인 사용자 시각 검토')
 if not release['publishApproved']: blocked.append('공개 게시 승인')
 if blocked:

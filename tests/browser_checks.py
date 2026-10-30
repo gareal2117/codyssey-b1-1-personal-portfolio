@@ -144,7 +144,7 @@ def run(browser, base_url):
         layout = browser.call('Page.getLayoutMetrics')['cssContentSize']
         data = browser.call('Page.captureScreenshot', {'format': 'png', 'captureBeyondViewport': True,
             'clip': {'x': 0, 'y': 0, 'width': layout['width'], 'height': layout['height'], 'scale': 1}})['data']
-        (ROOT / 'docs/screenshots' / name).write_bytes(base64.b64decode(data))
+        (ROOT / 'docs/screenshots' / (os.environ.get('SCREENSHOT_PREFIX', '') + name)).write_bytes(base64.b64decode(data))
 
     viewport(1440)
     load()
@@ -155,16 +155,32 @@ def run(browser, base_url):
     real_ok = settled and js("document.querySelectorAll('.project-card').length > 0 || document.querySelector('#projects-status').textContent.includes('표시할 프로젝트가 없습니다')")
     RESULTS.append({'name': '실제 GitHub API 연결', 'status': 'PASS' if real_ok else 'PARTIAL', 'detail': actual_status})
     wait_for(browser, "!document.querySelector('.typing-visual') || document.querySelector('[data-content=heroGreeting]').classList.contains('typing-complete')")
+    check('Hero 이니셜 JL', js("document.querySelector('.signal-core span').textContent === 'JL'"))
+    if base_url.startswith('https://gareal2117.github.io'):
+        assets = ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']
+        deployed = js("Promise.all(" + json.dumps(assets) + ".map(async name=>{const r=await fetch('./'+name,{cache:'no-store'});if(!r.ok)throw Error(name+': '+r.status);const bytes=await r.arrayBuffer();const hash=await crypto.subtle.digest('SHA-256',bytes);return [name,[...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('')]})).then(Object.fromEntries)")
+        check('배포 HTML·CSS·JS·SVG 해시가 로컬 검증 소스와 일치', deployed == {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in assets})
+    check('깨진 이미지 없음', js("[...document.images].every(img=>img.complete && img.naturalWidth>0)"))
+    # Observer의 실제 진입을 거쳐 하단 콘텐츠도 캡처에 표시합니다.
+    for section in ['about', 'skills', 'projects', 'contact']:
+        js(f"document.getElementById('{section}').scrollIntoView({{behavior:'instant'}})")
+        time.sleep(.4)
     screenshot('desktop.png')
+    for section in ['projects', 'contact']:
+        js(f"document.getElementById('{section}').scrollIntoView({{behavior:'instant'}})")
+        time.sleep(.3)
+        data = browser.call('Page.captureScreenshot', {'format':'png'})['data']
+        (ROOT / 'docs/screenshots' / (os.environ.get('SCREENSHOT_PREFIX', '') + section + '.png')).write_bytes(base64.b64decode(data))
     viewport(375)
     check('모바일 Header 로고 JL', js("document.querySelector('.logo').textContent === 'JL' && document.querySelector('.logo').getBoundingClientRect().width > 0"))
     click('.logo')
     check('Header 로고 Home 이동', wait_for(browser, "document.activeElement.id === 'home' && location.hash === '#home'"))
     screenshot('mobile.png')
     click('#theme-toggle')
+    screenshot('mobile-dark.png')
     viewport(1440)
     screenshot('dark.png')
-    check('실제 화면 스크린샷 3종', all((ROOT / 'docs/screenshots' / name).exists() for name in ['desktop.png', 'mobile.png', 'dark.png']))
+    check('실제 화면 스크린샷 6종', all((ROOT / 'docs/screenshots' / (os.environ.get('SCREENSHOT_PREFIX', '') + name)).exists() for name in ['desktop.png', 'mobile.png', 'dark.png', 'mobile-dark.png', 'projects.png', 'contact.png']))
     collision = js("fetch('https://api.github.com/repos/gareal2117/codyssey-b1-1-personal-portfolio').then(r => ({status:r.status})).catch(e => ({error:e.message}))")
 
     # 이후 응답은 테스트 전용입니다. 공개 코드나 제출 스크린샷에 샘플 저장소를 넣지 않습니다.
@@ -399,7 +415,7 @@ def run(browser, base_url):
     time.sleep(30)
     check('30초 렌더 유지 후 필터·폼·타이핑 안정', js("document.querySelectorAll('#project-grid article').length===3 && !document.querySelector('#contact-fields').disabled && document.querySelector('[data-content=heroGreeting]').classList.contains('typing-complete')"))
     check('미처리 JavaScript 예외·console.error 없음', not browser.exceptions and not browser.console_errors, json.dumps(browser.exceptions + browser.console_errors, ensure_ascii=False))
-    return {'phase': 2, 'sourceHashes': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']}, 'contrast': contrast, 'email_live': 'BLOCKED: configured mdeezyjq; actual sending/receipt awaits user; all email tests mocked and external endpoint blocked', 'pages_live': 'Not tested by local browser suite; check existing Pages deployment separately', 'browser': version, 'actual_api': actual_status, 'repository_name_check': collision, 'results': RESULTS}
+    return {'phase': 2, 'sourceHashes': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['index.html','css/style.css','js/config.js','js/main.js','images/profile-monogram.svg']}, 'contrast': contrast, 'email_live': 'USER VERIFIED 2026-10-30: user confirmed sending and receipt in spam folder; this suite only uses mocks and blocks the external endpoint', 'base_url': base_url, 'pages_live': 'Remote Pages suite' if base_url.startswith('https://gareal2117.github.io') else 'Local capture; not Pages verification', 'browser': version, 'actual_api': actual_status, 'repository_name_check': collision, 'results': RESULTS}
 
 
 def main():
@@ -420,8 +436,8 @@ def main():
             port = int(port_file.read_text().splitlines()[0])
             pages = json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/json'))
             browser = CDP(next(page for page in pages if page['type'] == 'page')['webSocketDebuggerUrl'])
-            report = run(browser, f'http://127.0.0.1:{server.server_port}')
-            (ROOT / 'docs/browser-results.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+            report = run(browser, os.environ.get('BROWSER_BASE_URL', f'http://127.0.0.1:{server.server_port}'))
+            (ROOT / os.environ.get('BROWSER_REPORT', 'docs/browser-results.json')).write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
             print(json.dumps({'browser': report['browser'], 'actual_api': report['actual_api'], 'repository_name_check': report['repository_name_check'], 'pass': sum(r['status'] == 'PASS' for r in RESULTS), 'fail': sum(r['status'] == 'FAIL' for r in RESULTS)}, ensure_ascii=False), flush=True)
         finally:
             if browser:

@@ -6,5 +6,5 @@
   <circle cx="390" cy="60" r="180" fill="none" stroke="#afdfff" stroke-opacity=".3" stroke-width="2"/>
   <circle cx="390" cy="60" r="220" fill="none" stroke="#afdfff" stroke-opacity=".2" stroke-width="2"/>
   <path d="M90 360h300" stroke="#a8daff" stroke-width="2"/>
-  <text x="77" y="305" fill="#fff" font-family="system-ui,sans-serif" font-size="184" font-weight="750" letter-spacing="-12">JL.</text>
+  <text x="77" y="305" fill="#fff" font-family="system-ui,sans-serif" font-size="184" font-weight="750" letter-spacing="-12">JL</text>
 </svg>

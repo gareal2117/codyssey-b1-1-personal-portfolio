@@ -88,11 +88,11 @@
   "release": {
     "repositoryName": "codyssey-b1-1-personal-portfolio",
     "repositoryUrl": "https://github.com/gareal2117/codyssey-b1-1-personal-portfolio",
-    "pagesUrl": null,
+    "pagesUrl": "https://gareal2117.github.io/codyssey-b1-1-personal-portfolio/",
     "designApproved": false,
     "publishApproved": true,
-    "pagesApproved": false,
-    "emailLiveVerified": false,
+    "pagesApproved": true,
+    "emailLiveVerified": true,
     "pagesVerified": false
   },
   "personal": {
